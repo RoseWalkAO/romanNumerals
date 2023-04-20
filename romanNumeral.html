@@ -1,0 +1,127 @@
+<html>
+<head>
+    <meta name="viewport" content="width=device-width">
+    <title>Going back 2,000 years</title>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="../CSS/Style.css">
+    <style>
+        body { 
+            background-color: orange;
+            font-family:'Times New Roman', Times, serif
+        }
+        textarea {
+            font-size: 60px;
+            width: 150px;
+            height: 80px;
+            text-align: center;
+        }
+        #output{
+            font-size: 60px;
+            background-color: red;
+            color: yellow;
+        }
+    </style>	
+</head>
+<header>
+	<h1>Roman Numeral Converter</h1>
+</header>
+<main>
+	<p>Enter a number between 1 and 999 and your number will be converted!</p>
+
+	<div style="text-align: center;">
+		<textarea maxlength="3" id="input" pattern="[0-9]*"></textarea>
+		<p>converts to...</p>
+		<p id="output"></p>
+	</div>
+</main>
+</body>
+<script>
+	input.addEventListener("input", function() {
+		//validating input
+		var value = input.value;
+		var newValue = value.replace(/[^0-9]/g, '');
+		input.value = newValue;
+		
+
+  		//HUNDREDS
+		var hundreds = input.value[input.value.length -3]
+		var hundredsRN = ""
+
+		if (hundreds == 9) {
+			hundredsRN = "CM";
+		} else if (hundreds == 8) {
+			hundredsRN = "DCCC";
+		} else if (hundreds == 7) {
+			hundredsRN = "DCC";
+		} else if (hundreds == 6) {
+			hundredsRN = "DC";
+		} else if (hundreds == 5) {
+			hundredsRN = "D";
+		} else if (hundreds == 4) {
+			hundredsRN = "CD";
+		} else if (hundreds == 3) {
+			hundredsRN = "CCC";
+		} else if (hundreds == 2) {
+			hundredsRN = "C";
+		} else if (hundreds == 1) {
+			hundredsRN = "C";
+		} else {
+			hundredsRN = "";
+		}
+
+		//TENS
+		var tens = input.value[input.value.length -2]
+		var tensRN = ""
+
+		if (tens == 9) {
+			tensRN = "XC";
+		} else if (tens == 8) {
+			tensRN = "LXXX";
+		} else if (tens == 7) {
+			tensRN = "LXX";
+		} else if (tens == 6) {
+			tensRN = "LX";
+		} else if (tens == 5) {
+			tensRN = "L";
+		} else if (tens == 4) {
+			tensRN = "XL";
+		} else if (tens == 3) {
+			tensRN = "XXX";
+		} else if (tens == 2) {
+			tensRN = "XX";
+		} else if (tens == 1) {
+			tensRN = "X";
+		} else {
+			tensRN = "";
+		}
+
+		//SINGLES
+		var singles = input.value[input.value.length -1]
+		var singlesRN = ""
+
+		if (singles == 9) {
+			singlesRN = "IX";
+		} else if (singles == 8) {
+			singlesRN = "VIII";
+		} else if (singles == 7) {
+			singlesRN = "VII";
+		} else if (singles == 6) {
+			singlesRN = "VI";
+		} else if (singles == 5) {
+			singlesRN = "V";
+		} else if (singles == 4) {
+			singlesRN = "IV";
+		} else if (singles == 3) {
+			singlesRN = "III";
+		} else if (singles == 2) {
+			singlesRN = "II";
+		} else if (singles == 1) {
+			singlesRN = "I";
+		} else {
+			singlesRN = "";
+		}
+
+		output.textContent = `${hundredsRN}${tensRN}${singlesRN}`
+		});
+</script>
+</html>
